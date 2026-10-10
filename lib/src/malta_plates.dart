@@ -81,16 +81,17 @@ const _Band _narrowBand = _Band(
   mGlyph: 30,
 );
 
-/// Taxi: blue x 8.5–52, y 8–61. The ring is held 4 units low because the box
-/// cannot start above the canvas.
+/// Taxi: blue x 8.5–52, y 0–61. The stars asset keeps its aspect, so it is
+/// scaled to the 61 the blue box allows (private plate's layout times 0.866)
+/// and centred across the band.
 const _Band _taxiBand = _Band(
   end: 52,
-  left: 8.5,
-  width: 43.5,
+  left: 10.3,
+  width: 39.9,
   starsTop: 0,
-  mTop: 40,
-  mHeight: 16,
-  mGlyph: 22,
+  mTop: 50,
+  mHeight: 10,
+  mGlyph: 14,
   rowsEnd: 61,
 );
 
@@ -152,7 +153,7 @@ abstract final class MaltaPlates {
       _Run(
         'letters',
         MaltaAlphabets.letters,
-        <double>[110, 166, 226],
+        <double>[110, 168, 226],
         _Layout.boxWidthLetters,
         top: 0,
         height: _Layout.lineHeight,
@@ -160,7 +161,7 @@ abstract final class MaltaPlates {
       _Run(
         'digits',
         MaltaAlphabets.digits,
-        <double>[350, 406, 461],
+        <double>[350, 405.5, 461],
         _Layout.boxWidthDigits,
         top: 0,
         height: _Layout.lineHeight,
@@ -233,7 +234,7 @@ abstract final class MaltaPlates {
       _Run(
         'digits',
         MaltaAlphabets.digits,
-        <double>[52, 92, 132, 173],
+        <double>[52, 92, 132, 172],
         40,
         top: _Layout.rowTop2,
         height: _Layout.rowBox,
@@ -264,7 +265,7 @@ abstract final class MaltaPlates {
       _Run(
         'letters',
         MaltaAlphabets.letters,
-        <double>[74, 119, 163],
+        <double>[74, 118.5, 163],
         44,
         top: _Layout.rowTop1,
         height: _Layout.rowBox,
