@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart' show Color, EdgeInsets;
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -107,7 +109,7 @@ const _Band _rowsBand = _Band(
   rowsEnd: 66,
 );
 
-/// A keyed group of slots at the given centres, each [width] wide.
+/// A keyed slot of one cell per centre, each [width] wide.
 class _Run {
   const _Run(
     this.key,
@@ -116,12 +118,32 @@ class _Run {
     this.width, {
     required this.top,
     required this.height,
+    this.minLength,
   });
 
   final String key;
   final PlateAlphabet alphabet;
   final List<double> centres;
   final double width, top, height;
+  final int? minLength;
+
+  /// The cell pitch: the distance between neighbouring centres.
+  double get pitch => centres.length > 1
+      ? (centres.last - centres.first) / (centres.length - 1)
+      : width;
+
+  PlateSlot get slot => PlateSlot(
+    alphabet: alphabet,
+    box: PlateBox(
+      centres.first - width / 2,
+      top,
+      centres.last - centres.first + width,
+      height,
+    ),
+    length: centres.length,
+    minLength: minLength,
+    spacing: max(0, pitch - 0.6 * 0.72 * height),
+  );
 }
 
 /// Text printed on every plate of the design (`BUS`, `TAXI`, `TR`).
@@ -135,8 +157,8 @@ class _Fixed {
 /// The Maltese plates, each a [_Band] plus keyed runs of slots and fixed text.
 ///
 /// [private] is `WTO 110`, three letters and three digits; [bus] is `BUS 105`;
-/// [taxi] is `TAXI 119 M`; [personalised] is `EDWARD 1`, free text in eight
-/// cells (the rule allows ten, which the canvas cannot hold at this size);
+/// [taxi] is `TAXI 119 M`; [personalised] is `EDWARD 1`, free text in one
+/// slot of eight cells (the rule allows ten, which the canvas cannot hold at this size);
 /// [trailer] is `TR 1818` and [motorcycle] `BCL 482` on the two-row plate,
 /// [vintage] the same face as the motorcycle plate in green.
 ///
@@ -220,6 +242,7 @@ abstract final class MaltaPlates {
         53.5,
         top: 0,
         height: _Layout.lineHeight,
+        minLength: 1,
       ),
     ],
   );
@@ -298,16 +321,10 @@ abstract final class MaltaPlates {
             ),
             const PlatePart(PlateSection.plain),
           ]);
-    int next = 0;
-    final List<PlateTextGroup> groups = <PlateTextGroup>[];
-    for (final _Run run in runs) {
-      groups.add(
-        PlateTextGroup(<int>[
-          for (int i = 0; i < run.centres.length; i++) next + i,
-        ], key: run.key),
-      );
-      next += run.centres.length;
-    }
+    final List<PlateTextGroup> groups = <PlateTextGroup>[
+      for (int i = 0; i < runs.length; i++)
+        PlateTextGroup(<int>[i], key: runs[i].key),
+    ];
     return PlateSpec(
       id: id,
       country: MaltaCountry.malta,
@@ -321,14 +338,7 @@ abstract final class MaltaPlates {
         PlatePart(strip, end: band.end),
         const PlatePart(PlateSection.plain),
       ]),
-      slots: <PlateSlot>[
-        for (final _Run run in runs)
-          for (final double cx in run.centres)
-            PlateSlot(
-              alphabet: run.alphabet,
-              box: PlateBox(cx - run.width / 2, run.top, run.width, run.height),
-            ),
-      ],
+      slots: <PlateSlot>[for (final _Run run in runs) run.slot],
       labels: <PlateLabel>[
         PlateLabel(
           text: 'M',

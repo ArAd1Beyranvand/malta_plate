@@ -26,21 +26,21 @@ void main() {
   /// category id -> (spec, theme, space-separated sample value)
   final Map<String, (PlateSpec, PlateTheme, String)> cases =
       <String, (PlateSpec, PlateTheme, String)>{
-        'private': (MaltaPlates.private, MaltaThemes.private, 'W T O 1 1 0'),
-        'bus': (MaltaPlates.bus, MaltaThemes.bus, '1 0 5'),
-        'taxi': (MaltaPlates.taxi, MaltaThemes.taxi, '1 1 9 M'),
+        'private': (MaltaPlates.private, MaltaThemes.private, 'WTO 110'),
+        'bus': (MaltaPlates.bus, MaltaThemes.bus, '105'),
+        'taxi': (MaltaPlates.taxi, MaltaThemes.taxi, '119 M'),
         'personalised': (
           MaltaPlates.personalised,
           MaltaThemes.personalised,
-          'E D W A R D 1',
+          'EDWARD1',
         ),
-        'trailer': (MaltaPlates.trailer, MaltaThemes.trailer, '1 8 1 8'),
+        'trailer': (MaltaPlates.trailer, MaltaThemes.trailer, '1818'),
         'motorcycle': (
           MaltaPlates.motorcycle,
           MaltaThemes.motorcycle,
-          'B C L 4 8 2',
+          'BCL 482',
         ),
-        'vintage': (MaltaPlates.vintage, MaltaThemes.vintage, 'H B S 8 9 6'),
+        'vintage': (MaltaPlates.vintage, MaltaThemes.vintage, 'HBS 896'),
       };
 
   for (final MapEntry<String, (PlateSpec, PlateTheme, String)> c
