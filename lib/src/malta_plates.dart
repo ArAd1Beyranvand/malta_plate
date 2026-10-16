@@ -158,7 +158,8 @@ class _Fixed {
 ///
 /// [private] is `WTO 110`, three letters and three digits; [bus] is `BUS 105`;
 /// [taxi] is `TAXI 119 M`; [personalised] is `EDWARD 1`, free text in one
-/// slot of eight cells (the rule allows ten, which the canvas cannot hold at this size);
+/// slot of eight cells (the rule allows ten, which the canvas cannot hold at
+/// this size);
 /// [trailer] is `TR 1818` and [motorcycle] `BCL 482` on the two-row plate,
 /// [vintage] the same face as the motorcycle plate in green.
 ///

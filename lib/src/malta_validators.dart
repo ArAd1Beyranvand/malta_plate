@@ -22,6 +22,9 @@ class MaltaValidator extends GatedPlateValidator {
   static const String reasonPersonalised =
       'A personalised plate is one to ten letters or digits.';
 
+  static final RegExp _personalised = RegExp(r'^[A-Z0-9]{1,10}$');
+  static final RegExp _letters = RegExp(r'^[A-Z]{3}$');
+
   @override
   PlateValidation judge(PlateEntry entry) {
     final String digits = entry.group('digits');
@@ -29,7 +32,7 @@ class MaltaValidator extends GatedPlateValidator {
     final String island = entry.group('island');
     final String text = entry.group('text');
     if (text.isNotEmpty) {
-      return RegExp(r'^[A-Z0-9]{1,10}$').hasMatch(text)
+      return _personalised.hasMatch(text)
           ? const PlateValidation.valid()
           : const PlateValidation.invalid(reasonPersonalised);
     }
@@ -40,8 +43,7 @@ class MaltaValidator extends GatedPlateValidator {
           : const PlateValidation.invalid(reasonTaxi);
     }
     if (letters.isNotEmpty) {
-      return isDigitsOfLength(digits, 3) &&
-              RegExp(r'^[A-Z]{3}$').hasMatch(letters)
+      return isDigitsOfLength(digits, 3) && _letters.hasMatch(letters)
           ? const PlateValidation.valid()
           : const PlateValidation.invalid(reasonPrivate);
     }
