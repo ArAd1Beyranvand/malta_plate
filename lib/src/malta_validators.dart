@@ -17,10 +17,8 @@ class MaltaValidator extends GatedPlateValidator {
   static const String reasonPrivate = 'A plate is three letters, three digits.';
   static const String reasonBus = 'A bus plate is BUS and three digits.';
   static const String reasonTrailer = 'A trailer plate is TR and four digits.';
-  static const String reasonTaxi =
-      'A taxi plate is TAXI, three digits and M or G.';
-  static const String reasonPersonalised =
-      'A personalised plate is one to ten letters or digits.';
+  static const String reasonTaxi = 'A taxi plate is TAXI, three digits and M or G.';
+  static const String reasonPersonalised = 'A personalised plate is one to ten letters or digits.';
 
   static final RegExp _personalised = RegExp(r'^[A-Z0-9]{1,10}$');
   static final RegExp _letters = RegExp(r'^[A-Z]{3}$');
@@ -37,8 +35,7 @@ class MaltaValidator extends GatedPlateValidator {
           : const PlateValidation.invalid(reasonPersonalised);
     }
     if (island.isNotEmpty) {
-      return isDigitsOfLength(digits, 3) &&
-              MaltaAlphabets.island.characters.contains(island)
+      return isDigitsOfLength(digits, 3) && MaltaAlphabets.island.characters.contains(island)
           ? const PlateValidation.valid()
           : const PlateValidation.invalid(reasonTaxi);
     }
