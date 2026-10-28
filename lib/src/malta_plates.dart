@@ -153,8 +153,7 @@ class _Fixed {
 /// [private] is `WTO 110`, three letters and three digits; [bus] is `BUS 105`;
 /// [taxi] is `TAXI 119 M`; [personalised] is `EDWARD 1`, free text in one
 /// slot of eight cells (the rule allows ten, which the canvas cannot hold at
-/// this size); [trailer] is `TR 1818` and [motorcycle] `BCL 482` on the two-row plate,
-/// [vintage] the same face as the motorcycle plate in green.
+/// this size); [trailer] is `TR 1818` and [motorcycle] `BCL 482` on the two-row plate (and, in green, the vintage plate).
 ///
 /// Not implemented: the 1952–79 and 1979–95 series (history, not the current
 /// system), the president's vehicle (a coat of arms in place of a plate), the
@@ -259,9 +258,8 @@ abstract final class MaltaPlates {
     ],
   );
 
+  /// Motorcycle and vintage: `MaltaThemes.vintage` makes it green.
   static final PlateSpec motorcycle = _rowsSpec('mt.motorcycle');
-
-  static final PlateSpec vintage = _rowsSpec('mt.vintage');
 
   static List<PlateSpec> get all => <PlateSpec>[
     private,
@@ -270,7 +268,6 @@ abstract final class MaltaPlates {
     personalised,
     trailer,
     motorcycle,
-    vintage,
   ];
 
   static PlateSpec _rowsSpec(String id) => _spec(

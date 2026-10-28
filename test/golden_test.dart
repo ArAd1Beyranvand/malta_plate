@@ -32,7 +32,7 @@ void main() {
         'personalised': (MaltaPlates.personalised, MaltaThemes.personalised, 'EDWARD1'),
         'trailer': (MaltaPlates.trailer, MaltaThemes.trailer, '1818'),
         'motorcycle': (MaltaPlates.motorcycle, MaltaThemes.motorcycle, 'BCL 482'),
-        'vintage': (MaltaPlates.vintage, MaltaThemes.vintage, 'HBS 896'),
+        'vintage': (MaltaPlates.motorcycle, MaltaThemes.vintage, 'HBS 896'),
       };
 
   for (final MapEntry<String, (PlateSpec, PlateTheme, String)> c in cases.entries) {
