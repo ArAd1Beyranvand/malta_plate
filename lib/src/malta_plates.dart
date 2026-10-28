@@ -128,12 +128,18 @@ class _Run {
   final int? minLength;
 
   /// The cell pitch: the distance between neighbouring centres.
-  double get pitch =>
-      centres.length > 1 ? (centres.last - centres.first) / (centres.length - 1) : width;
+  double get pitch => centres.length > 1
+      ? (centres.last - centres.first) / (centres.length - 1)
+      : width;
 
   PlateSlot get slot => PlateSlot(
     alphabet: alphabet,
-    box: PlateBox(centres.first - width / 2, top, centres.last - centres.first + width, height),
+    box: PlateBox(
+      centres.first - width / 2,
+      top,
+      centres.last - centres.first + width,
+      height,
+    ),
     length: centres.length,
     minLength: minLength,
     spacing: max(0, pitch - 0.6 * 0.72 * height),
@@ -306,11 +312,15 @@ abstract final class MaltaPlates {
     final PlateSection strip = band.rowsEnd == null
         ? const PlateSection.fill(PlateFill.panel)
         : PlateSection.rows(<PlatePart>[
-            PlatePart(const PlateSection.fill(PlateFill.panel), end: band.rowsEnd),
+            PlatePart(
+              const PlateSection.fill(PlateFill.panel),
+              end: band.rowsEnd,
+            ),
             const PlatePart(PlateSection.plain),
           ]);
     final List<PlateTextGroup> groups = <PlateTextGroup>[
-      for (int i = 0; i < runs.length; i++) PlateTextGroup(<int>[i], key: runs[i].key),
+      for (int i = 0; i < runs.length; i++)
+        PlateTextGroup(<int>[i], key: runs[i].key),
     ];
     return PlateSpec(
       id: id,
