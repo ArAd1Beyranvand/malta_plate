@@ -1,7 +1,7 @@
 name: malta_plate
 description: "Malta's licence plates for plate_core: seven plates (private, bus, taxi, personalised, trailer, motorcycle, vintage), black on white with the EU band, themes, and more."
 version: 0.1.0
-repository: https://github.com/ArAd1Beyranvand/malta_plate
+repository: https://github.com/ArAd1Beyranvand/malta_plate/tree/main/flutter
 resolution: workspace
 
 environment:
