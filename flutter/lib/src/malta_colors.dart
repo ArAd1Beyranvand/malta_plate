@@ -26,6 +26,4 @@ abstract final class MaltaColors {
   static const Color vintageInk = Color(0xFF124A30);
 
   static const Color personalisedInk = Color(0xFF26303D);
-
-  static const Color inactive = Color(0xFFB0B0B0);
 }

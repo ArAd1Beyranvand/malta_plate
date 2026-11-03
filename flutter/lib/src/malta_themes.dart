@@ -54,7 +54,6 @@ PlateTheme _theme(Color field, Color ink, double border) =>
     PlateTheme.monochrome(
       field: field,
       ink: ink,
-      inactive: MaltaColors.inactive,
       borderWidthRatio: border,
       plateRadiusRatio: 0.07,
     );

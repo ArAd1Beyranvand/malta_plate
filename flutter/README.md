@@ -6,13 +6,24 @@ GO VEGAN 🌱
 
 From the mighty people of Iran to the resilient people of Malta to view examples:
 
-https://platexample.ir/#/discover/malta
+https://platexample.ir/#/discover/malta:flutter
 
 # malta_plate
 
-Malta's licence plates for the `plate_core` library. Seven plates (private, bus, taxi, personalised, trailer, motorcycle, vintage), black on white with the EU band, their themes, alphabets and an advisory validator.
+Malta's licence plates for plate_core: seven plates (private, bus, taxi, personalised, trailer, motorcycle, vintage), black on white with the EU band, themes, and more.
 
-## Install
+## Languages
+
+| Language | Folder | Example |
+| --- | --- | --- |
+| Flutter / Dart | [`flutter/`](https://github.com/ArAd1Beyranvand/malta_plate/tree/main/flutter) | [platexample](https://platexample.ir/#/discover/malta:flutter) |
+| Kotlin | [`kotlin/`](https://github.com/ArAd1Beyranvand/malta_plate/tree/main/kotlin) | [platexample](https://platexample.ir/#/discover/malta:kotlin) |
+| Python | [`python/`](https://github.com/ArAd1Beyranvand/malta_plate/tree/main/python) | [platexample](https://platexample.ir/#/discover/malta:python) |
+| TypeScript | [`typescript/`](https://github.com/ArAd1Beyranvand/malta_plate/tree/main/typescript) | [platexample](https://platexample.ir/#/discover/malta:typescript) |
+
+## Quick start
+
+### Install
 
 ```yaml
 dependencies:
@@ -20,7 +31,7 @@ dependencies:
   malta_plate: ^0.1.0
 ```
 
-## Use
+### Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
@@ -35,12 +46,35 @@ PlateCanvas(
 );
 ```
 
-## Contains
+## Specs
 
-- `MaltaCountry` — country panel: `malta`.
-- `MaltaPlates` — 6 plate specs: `private`, `bus`, `taxi`, `personalised`, `trailer`, `motorcycle`.
-- `MaltaThemes` — 7 themes: `private`, `taxi`, `bus`, `personalised`, `trailer`, `motorcycle`, `vintage`.
-- `MaltaValidator` — advisory validator; flags the frame, never blocks a keystroke.
+Each spec is one plate layout.
+
+- `MaltaPlates.private` — id `mt.private`
+- `MaltaPlates.bus` — id `mt.bus`
+- `MaltaPlates.taxi` — id `mt.taxi`
+- `MaltaPlates.personalised` — id `mt.personalised`
+- `MaltaPlates.trailer` — id `mt.trailer`
+- `MaltaPlates.motorcycle`
+
+## Themes
+
+- `MaltaThemes.private`
+- `MaltaThemes.taxi`
+- `MaltaThemes.bus`
+- `MaltaThemes.personalised`
+- `MaltaThemes.trailer`
+- `MaltaThemes.motorcycle`
+- `MaltaThemes.vintage`
+
+## Change it
+
+`PlateCanvas` takes `spec:` (an entry of `MaltaPlates`) and `theme:` (an entry of `MaltaThemes`). Set `validator:` to `MaltaValidator()` and `autoValidate: true` to show validation hints.
+
+## Also included
+
+- `MaltaCountry` — the country panel.
+- `MaltaValidator` — the plate validator.
 
 ## Plates
 
@@ -59,3 +93,6 @@ sticker and the lower-left stickers of the two-row plates are not drawn.
 
 Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
 
+## License
+
+See [LICENSE](https://github.com/ArAd1Beyranvand/malta_plate/blob/main/LICENSE).

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/widgets.dart' show Color, EdgeInsets;
 import 'package:plate_alphabet/plate_alphabet.dart';
 import 'package:plate_core/plate_core.dart';
@@ -142,7 +140,7 @@ class _Run {
     ),
     length: centres.length,
     minLength: minLength,
-    spacing: max(0, pitch - 0.6 * 0.72 * height),
+    spacing: plateRunSpacing(pitch, height),
   );
 }
 
